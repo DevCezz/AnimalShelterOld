@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class AddDialog extends JDialog {
     private JTextField typeName;
-    private JTextField typeKind;
+    private JComboBox<String> optionKind;
     private JTextField typeAge;
 
     public AddDialog(JFrame owner) {
@@ -21,8 +21,8 @@ public class AddDialog extends JDialog {
         JLabel kind = new JLabel("Rodzaj: ");
         add(kind, new GBC(0, 1).setInsets(10));
 
-        typeKind = new JTextField(12);
-        add(typeKind, new GBC(1, 1).setInsets(5));
+        optionKind = new JComboBox<>(new String[] {"Pies", "Kot", "Mysz", "Kanarek", "Chomik", "Królik", "Rybka"});
+        add(optionKind, new GBC(1, 1).setInsets(5));
 
         JLabel age = new JLabel("Wiek: ");
         add(age, new GBC(0, 2).setInsets(10));
@@ -41,8 +41,8 @@ public class AddDialog extends JDialog {
         setResizable(false);
     }
 
-    public JTextField getTypeKind() {
-        return typeKind;
+    public String getOptionKindKind() {
+        return (String) optionKind.getSelectedItem();
     }
 
     public JTextField getTypeAge() {

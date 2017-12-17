@@ -4,13 +4,20 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DrawInfomation extends JPanel {
+    private JLabel idAnimal;
     private JLabel nameAniamal;
     private JLabel kindAnimal;
     private JLabel ageAnimal;
     private Animal animal;
 
     public DrawInfomation() {
-        this.setLayout(new GridLayout(3,2));
+        this.setLayout(new GridLayout(4,2));
+
+        JLabel id = new JLabel("ID: ");
+        id.setHorizontalAlignment(SwingConstants.CENTER);
+        add(id);
+        idAnimal = new JLabel("" + 0);
+        add(idAnimal);
 
         JLabel name = new JLabel("Imię: ");
         name.setHorizontalAlignment(SwingConstants.CENTER);
@@ -33,11 +40,13 @@ public class DrawInfomation extends JPanel {
 
     public void updateInformation(Animal animal) {
         if (animal != null) {
+            idAnimal.setText("" + animal.getId_animal());
             nameAniamal.setText(animal.getName());
             kindAnimal.setText(animal.getKindOfAnimal());
             ageAnimal.setText("" + animal.getAge());
         }
         else {
+            idAnimal.setText("");
             nameAniamal.setText("");
             kindAnimal.setText("");
             ageAnimal.setText("");
