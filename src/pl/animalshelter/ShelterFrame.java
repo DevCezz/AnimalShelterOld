@@ -100,9 +100,13 @@ public class ShelterFrame extends JFrame {
                     for(int j = i; j < animalList.getModel().getSize(); j++) {
                         animalList.getModel().getElementAt(j).setId_animal(j);
                         dataBase.updateID(j);
-                }}
+                    }
+                    Animal.setNext_id(animalList.getModel().getSize());
+
+                }
                 ((DefaultListModel)animalList.getModel()).removeElement(drawInfomation.getAnimal());
                 drawInfomation.updateInformation(null);
+                drawInfomation.setAnimal(null);
             }});
     }
 
@@ -115,6 +119,11 @@ public class ShelterFrame extends JFrame {
             else aboutDialog.setVisible(true);
         });
 
+        JMenuItem toCSV = new JMenuItem("Import do CSV");
+        toCSV.addActionListener(e -> {
+            new WriterToCSV(animalList.getActualAnimals());
+        });
+
         JMenuItem exitItem = new JMenuItem("Zamknij");
         exitItem.addActionListener(e -> {
             dataBase.disconnect();
@@ -122,6 +131,7 @@ public class ShelterFrame extends JFrame {
         });
 
         main.add(aboutItem);
+        main.add(toCSV);
         main.addSeparator();
         main.add(exitItem);
         menuBar.add(main);

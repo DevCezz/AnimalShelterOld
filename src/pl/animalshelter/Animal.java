@@ -39,16 +39,16 @@ public class Animal {
         return name;
     }
 
-    public ImageIcon getPhoto() {
-        return photo;
-    }
-
     public int getId_animal() {
         return id_animal;
     }
 
     public void setId_animal(int id_animal) {
         this.id_animal = id_animal;
+    }
+
+    public static void setNext_id(int next_id) {
+        Animal.next_id = next_id;
     }
 
     @Override

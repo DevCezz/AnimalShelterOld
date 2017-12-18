@@ -34,7 +34,6 @@ public class DataBase {
                 animals.add(new Animal(rs.getInt(1), rs.getString(2), rs.getString(3),
                         rs.getInt(4), null));
             }
-            System.out.println(animals);
         }
         catch (SQLException se) {
             se.printStackTrace();

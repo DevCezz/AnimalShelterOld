@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class AnimalList extends JList<Animal>{
     private DefaultListModel defaultListModel;
     private Animal animal;
+    private static int nextId;
 
     public AnimalList(DrawInfomation drawInfomation) {
         defaultListModel = new DefaultListModel();
@@ -26,6 +27,7 @@ public class AnimalList extends JList<Animal>{
         for (int i = 0; i < animals.size(); i++) {
             defaultListModel.addElement(animals.get(i));
         }
+        nextId = animals.size();
 
         setMinimumSize(new Dimension(100, 100));
         setPreferredSize(new Dimension(200, 200));
@@ -36,6 +38,14 @@ public class AnimalList extends JList<Animal>{
 
     public void addAnimal(Animal animal) {
         defaultListModel.addElement(animal);
+    }
+
+    public ArrayList<Animal> getActualAnimals() {
+        ArrayList<Animal> animals = new ArrayList<>();
+        for (int i = 0; i < defaultListModel.size(); i++) {
+            animals.add((Animal) defaultListModel.get(i));
+        }
+        return animals;
     }
 
     private class MouseHandler extends MouseAdapter {
