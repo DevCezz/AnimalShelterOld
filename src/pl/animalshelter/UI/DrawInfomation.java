@@ -1,4 +1,6 @@
-package pl.animalshelter;
+package pl.animalshelter.UI;
+
+import pl.animalshelter.Units.Animal;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,6 @@
-package pl.animalshelter;
+package pl.animalshelter.DatabaseAnimals;
+
+import pl.animalshelter.Units.Animal;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -6,7 +8,6 @@ import java.util.ArrayList;
 public class DataBase {
     private static final String DataBase_Driver = "oracle.jdbc.driver.OracleDriver";
     private static final String DataBase_URL = "jdbc:oracle:thin:@localhost:1521:xe";
-
     private static final String USER = "MYSHELTER";
     private static final String PASS = "animal";
     private Statement stmt = null;
@@ -32,7 +33,7 @@ public class DataBase {
             ResultSet rs = stmt.executeQuery("Select * from MYSHELTER.ANIMALS ORDER BY ID_ANIMAL");
             while (rs.next()) {
                 animals.add(new Animal(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getInt(4), null));
+                        rs.getInt(4)));
             }
         }
         catch (SQLException se) {

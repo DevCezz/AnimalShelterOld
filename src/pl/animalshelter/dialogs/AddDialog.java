@@ -1,4 +1,6 @@
-package pl.animalshelter;
+package pl.animalshelter.dialogs;
+
+import pl.animalshelter.UI.GBC;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,6 @@
-package pl.animalshelter;
+package pl.animalshelter.Units;
+
+import pl.animalshelter.UI.DrawInfomation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 public class AnimalList extends JList<Animal>{
     private DefaultListModel defaultListModel;
     private Animal animal;
+    private int capacity;
     private static int nextId;
 
     public AnimalList(DrawInfomation drawInfomation) {
@@ -46,6 +49,14 @@ public class AnimalList extends JList<Animal>{
             animals.add((Animal) defaultListModel.get(i));
         }
         return animals;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 
     private class MouseHandler extends MouseAdapter {

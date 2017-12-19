@@ -1,17 +1,19 @@
-package pl.animalshelter;
+package pl.animalshelter.dialogs;
+
+import pl.animalshelter.UI.GBC;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class NoAnimalDialog extends JDialog {
-    public NoAnimalDialog(JFrame owner) {
+public class DeleteDialog extends JDialog {
+    public DeleteDialog(JFrame owner) {
         super(owner, "Adopcja", true);
         setSize(400, 200);
         setLayout(new GridBagLayout());
 
         JPanel panelName = new JPanel();
         Font font = new Font("Serif", Font.BOLD, 15);
-        JLabel text = new JLabel("Brak podopiecznych w naszym schronisku! :)");
+        JLabel text = new JLabel("Ktoś zaadoptował naszego podopiecznego!");
         text.setFont(font);
         panelName.add(text, BorderLayout.SOUTH);
         add(panelName, new GBC(2, 1));

@@ -1,4 +1,4 @@
-package pl.animalshelter;
+package pl.animalshelter.dialogs;
 
 import javax.swing.*;
 import java.awt.*;

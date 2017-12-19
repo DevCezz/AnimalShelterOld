@@ -1,4 +1,4 @@
-package pl.animalshelter;
+package pl.animalshelter.UI;
 
 import java.awt.*;
 
