@@ -13,7 +13,7 @@ public class ShelterFrame extends JFrame {
     private JMenuBar menuBar;
     private JLabel capacityLabel;
     private AnimalList animalList;
-    private DrawInfomation drawInfomation;
+    private DrawInformation drawInformation;
     private DataBase dataBase;
     private AddingButton addButton;
     private DeletingButton deleteButton;
@@ -26,11 +26,11 @@ public class ShelterFrame extends JFrame {
         dataBase = new DataBase();
         dataBase.connection();
 
-        drawInfomation = new DrawInfomation();
-        drawInfomation.setPreferredSize(new Dimension(200, 350));
-        add(drawInfomation, new GBC(1, 0, 1, 8));
+        drawInformation = new DrawInformation();
+        drawInformation.setPreferredSize(new Dimension(200, 350));
+        add(drawInformation, new GBC(1, 0, 1, 8));
 
-        animalList = new AnimalList(drawInfomation, dataBase.getDatabase());
+        animalList = new AnimalList(drawInformation, dataBase.getDatabase());
         animalList.setPreferredSize(new Dimension(200, 450));
         animalList.setCapacity(20);
         JScrollPane scrollPane = new JScrollPane(animalList);
@@ -60,8 +60,8 @@ public class ShelterFrame extends JFrame {
         this.addWindowListener(new WindowHandler());
     }
 
-    public DrawInfomation getDrawInfomation() {
-        return drawInfomation;
+    public DrawInformation getDrawInformation() {
+        return drawInformation;
     }
 
     public DataBase getDataBase() {

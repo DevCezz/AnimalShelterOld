@@ -13,14 +13,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddingButton extends JButton{
+public class AddingButton extends JButton {
     private AddDialog addAnimalDialog;
     private ShelterFrame owner;
     private NoSpaceDialog noSpaceDialog;
 
     public AddingButton(ShelterFrame owner) {
         super("Dodaj zwierzaka");
-        this.setPreferredSize(new Dimension(150,30));
+        this.setPreferredSize(new Dimension(150, 30));
         this.owner = owner;
         this.addActionListener(new ActionHandler());
     }
@@ -41,15 +41,23 @@ public class AddingButton extends JButton{
 
             String name = addAnimalDialog.getTypeName().getText();
             String kind = addAnimalDialog.getOptionKindKind();
-            int age = Integer.parseInt(addAnimalDialog.getTypeAge().getText());
-            if(name != "" && kind != "" && age != 0) {
+            int age = 0;
+            try {
+                 age = Integer.parseInt(addAnimalDialog.getTypeAge().getText() == "" ? //wywala blad przy wylaczaniu dodawania
+                        "0" : addAnimalDialog.getTypeAge().getText());
+            }
+            catch (Exception ea) {
+                ea.printStackTrace();
+            }   ///
+
+            if (name != "" && kind != "" && age != 0) {
                 Animal animal = new Animal(name, kind, age);
 
                 animalList.addAnimal(animal);
                 dataBase.add(animal);
                 capacityLabel.setText("Pojemność: " + animalList.getModel().getSize()
                         + "/" + capacity);
-                if(animalList.getModel().getSize() > capacity - 3) {
+                if (animalList.getModel().getSize() > capacity - 3) {
                     WriterToPDF pdf = new WriterToPDF(animalList);
                     String nameOfPDF = pdf.toString();
 
@@ -66,8 +74,7 @@ public class AddingButton extends JButton{
                                 "\n\nBest regards," + "\nBreeder", "The animal shelter is full!");
                     }
                 }
-            }
-            else {
+            } else {
                 if (noSpaceDialog == null) noSpaceDialog = new NoSpaceDialog(owner);
                 noSpaceDialog.setVisible(true);
             }

@@ -6,10 +6,10 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DataBase {
-    private static final String DataBase_Driver = "oracle.jdbc.driver.OracleDriver";
-    private static final String DataBase_URL = "jdbc:oracle:thin:@localhost:1521:xe";
-    private static final String USER = "MYSHELTER";
-    private static final String PASS = "animal";
+    private static final String DataBase_Driver = "com.mysql.cj.jdbc.Driver";
+    private static final String DataBase_URL = "jdbc:mysql://localhost:3306/MYSHELTER";
+    private static final String USER = "root";
+    private static final String PASS = "root";
     private Statement stmt = null;
     private Connection conn = null;
 
@@ -44,7 +44,7 @@ public class DataBase {
 
     public void add(Animal animal) {
         try {
-            stmt.executeQuery("INSERT INTO ANIMALS " + "VALUES (" + animal.getId_animal() + ", '" + animal.getName() + "', '" + animal.getKindOfAnimal()
+            stmt.executeUpdate("INSERT INTO ANIMALS " + "VALUES (" + animal.getId_animal() + ", '" + animal.getName() + "', '" + animal.getKindOfAnimal()
                     + "', " + animal.getAge() + ")");
         }
         catch (SQLException se) {
@@ -54,7 +54,7 @@ public class DataBase {
 
     public void delete(Animal animal) {
         try {
-            stmt.executeQuery("DELETE FROM ANIMALS " + "WHERE ID_ANIMAL = " + animal.getId_animal() + " AND NAME = '" + animal.getName() + "' AND KIND = '" + animal.getKindOfAnimal()
+            stmt.executeUpdate("DELETE FROM ANIMALS " + "WHERE ID_ANIMAL = " + animal.getId_animal() + " AND NAME = '" + animal.getName() + "' AND KIND = '" + animal.getKindOfAnimal()
                     + "' AND AGE = " + animal.getAge());
         }
         catch (SQLException se) {
@@ -65,7 +65,7 @@ public class DataBase {
     public void updateID(int id) {
         try {
             int oldId = id + 1;
-            stmt.executeQuery("UPDATE ANIMALS " + "SET ID_ANIMAL = " + id + " WHERE ID_ANIMAL = " + oldId);
+            stmt.executeUpdate("UPDATE ANIMALS " + "SET ID_ANIMAL = " + id + " WHERE ID_ANIMAL = " + oldId);
         }
         catch (SQLException se) {
             se.printStackTrace();

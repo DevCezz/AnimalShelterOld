@@ -3,9 +3,18 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/lib" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/lib/docs/javadocs" />
+    </JAVADOC>
     <SOURCES>
       <root url="file://$PROJECT_DIR$/lib" />
+      <root url="file://$PROJECT_DIR$/lib/demo" />
+      <root url="file://$PROJECT_DIR$/lib/demo/client" />
+      <root url="file://$PROJECT_DIR$/lib/demo/logging" />
+      <root url="file://$PROJECT_DIR$/lib/demo/outlook" />
+      <root url="file://$PROJECT_DIR$/lib/demo/servlet" />
+      <root url="file://$PROJECT_DIR$/lib/demo/webapp/src/classes" />
+      <root url="file://$PROJECT_DIR$/lib/demo/webapp/src/taglib" />
     </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" type="SOURCES" />

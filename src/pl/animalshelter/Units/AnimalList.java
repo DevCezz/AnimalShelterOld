@@ -1,6 +1,6 @@
 package pl.animalshelter.Units;
 
-import pl.animalshelter.UI.DrawInfomation;
+import pl.animalshelter.UI.DrawInformation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,17 +14,17 @@ public class AnimalList extends JList<Animal>{
     private int capacity;
     private static int nextId;
 
-    public AnimalList(DrawInfomation drawInfomation) {
+    public AnimalList(DrawInformation drawInformation) {
         defaultListModel = new DefaultListModel();
         this.setModel(defaultListModel);
         setMinimumSize(new Dimension(100,200));
         setPreferredSize(new Dimension(200,400));
         setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        addMouseListener(new MouseHandler(drawInfomation));
+        addMouseListener(new MouseHandler(drawInformation));
     }
 
-    public AnimalList(DrawInfomation drawInfomation, ArrayList<Animal> animals) {
+    public AnimalList(DrawInformation drawInformation, ArrayList<Animal> animals) {
         defaultListModel = new DefaultListModel();
         this.setModel(defaultListModel);
         for (int i = 0; i < animals.size(); i++) {
@@ -36,7 +36,7 @@ public class AnimalList extends JList<Animal>{
         setPreferredSize(new Dimension(200, 200));
         setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        addMouseListener(new MouseHandler(drawInfomation));
+        addMouseListener(new MouseHandler(drawInformation));
     }
 
     public void addAnimal(Animal animal) {
@@ -60,22 +60,22 @@ public class AnimalList extends JList<Animal>{
     }
 
     private class MouseHandler extends MouseAdapter {
-        private DrawInfomation drawInfomation;
-        public MouseHandler(DrawInfomation drawInfomation) {
-            this.drawInfomation = drawInfomation;
+        private DrawInformation drawInformation;
+        public MouseHandler(DrawInformation drawInformation) {
+            this.drawInformation = drawInformation;
         }
 
         public void mouseClicked(MouseEvent e) {
             animal = (Animal) ((JList)e.getSource()).getSelectedValue();
-            drawInfomation.updateInformation(animal);
-            drawInfomation.setAnimal(animal);
+            drawInformation.updateInformation(animal);
+            drawInformation.setAnimal(animal);
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
             animal = (Animal) ((JList)e.getSource()).getSelectedValue();
-            drawInfomation.updateInformation(animal);
-            drawInfomation.setAnimal(animal);
+            drawInformation.updateInformation(animal);
+            drawInformation.setAnimal(animal);
         }
     }
 }

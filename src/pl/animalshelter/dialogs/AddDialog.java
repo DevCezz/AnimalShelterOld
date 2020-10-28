@@ -4,6 +4,8 @@ import pl.animalshelter.UI.GBC;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class AddDialog extends JDialog {
     private JTextField typeName;
@@ -40,6 +42,7 @@ public class AddDialog extends JDialog {
         setLocation(owner.getLocation().x + (owner.getWidth() - getWidth()) / 2, owner.getLocation().y +
                 (owner.getHeight() - getHeight()) / 2);
 
+        addWindowListener(new WindowHandler());
         setResizable(false);
     }
 
@@ -53,5 +56,17 @@ public class AddDialog extends JDialog {
 
     public JTextField getTypeName() {
         return typeName;
+    }
+
+    private class WindowHandler extends WindowAdapter {
+        @Override
+        public void windowClosing(WindowEvent e) {
+            setVisible(false);
+        }
+
+        @Override
+        public void windowClosed(WindowEvent e) {
+            setVisible(false);
+        }
     }
 }

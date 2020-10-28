@@ -31,7 +31,7 @@ public class DeletingButton extends JButton {
         public void actionPerformed(ActionEvent e) {
             AnimalList animalList = owner.getAnimalList();
             DataBase dataBase = owner.getDataBase();
-            DrawInfomation drawInfomation = owner.getDrawInfomation();
+            DrawInformation drawInformation = owner.getDrawInformation();
             JLabel capacityLabel = owner.getCapacityLabel();
 
             if(animalList.getModel().getSize() == 0) {
@@ -39,15 +39,15 @@ public class DeletingButton extends JButton {
                 noAnimalDialog.setVisible(true);
             }
             else {
-                if (drawInfomation.getAnimal() == null) {
+                if (drawInformation.getAnimal() == null) {
                     if (noChosenDialog == null) noChosenDialog = new NoChosenDialog(owner);
                     noChosenDialog.setVisible(true);
                 }
                 else {
                     if (deleteAnimalDialog == null) deleteAnimalDialog = new DeleteDialog(owner);
                     deleteAnimalDialog.setVisible(true);
-                    dataBase.delete(drawInfomation.getAnimal());
-                    int i = drawInfomation.getAnimal().getId_animal();
+                    dataBase.delete(drawInformation.getAnimal());
+                    int i = drawInformation.getAnimal().getId_animal();
                     for(int j = i; j < animalList.getModel().getSize(); j++) {
                         animalList.getModel().getElementAt(j).setId_animal(j);
                         dataBase.updateID(j);
@@ -55,9 +55,9 @@ public class DeletingButton extends JButton {
                     Animal.setNext_id(animalList.getModel().getSize());
 
                 }
-                ((DefaultListModel)animalList.getModel()).removeElement(drawInfomation.getAnimal());
-                drawInfomation.updateInformation(null);
-                drawInfomation.setAnimal(null);
+                ((DefaultListModel)animalList.getModel()).removeElement(drawInformation.getAnimal());
+                drawInformation.updateInformation(null);
+                drawInformation.setAnimal(null);
                 capacityLabel.setText("Pojemność: " + animalList.getActualAnimals().size()
                         + "/" + animalList.getCapacity());
             }}
